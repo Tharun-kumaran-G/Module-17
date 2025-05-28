@@ -21,11 +21,42 @@ To write a Python program to generate a graph for a given **fixed degree sequenc
 ## PYTHON PROGRAM
 
 ```
-ENTER YOUR CODE HERE
+def printMat(degseq, n):
+    mat = [[0] * n for _ in range(n)]
+    
+    for i in range(n):
+        for j in range(i + 1, n):
+            if degseq[i] > 0 and degseq[j] > 0:
+                degseq[i] -= 1
+                degseq[j] -= 1
+                mat[i][j] = 1
+                mat[j][i] = 1
+
+    print("      ", end ="")
+    for i in range(n):
+        print(" ", "(", i, ")", end ="")
+    print()
+    print()
+    for i in range(n):
+        print("  ", "(", i, ")", end = " ")
+        for j in range(n):
+            print("  ", mat[i][j], end = " ")
+        print()
+
+degseq = []
+for i in range(0, 5):
+    ele = int(input())
+    degseq.append(ele)
+
+n = len(degseq)
+printMat(degseq, n)
+
 ```
 
 ## OUTPUT
-```
-```
+
+![image](https://github.com/user-attachments/assets/51c9754b-5e4e-4c5b-82e4-da18503f8e04)
 
 ## RESULT
+
+Thus, the program has been executed and verified successfully.
