@@ -23,11 +23,48 @@ To write a Python program to **print topological sorting** of a **Directed Acycl
 ## PYTHON PROGRAM
 
 ```
-WRITE YOUR CODE HERE
+def addEdge(u, v):
+	global adj
+	adj[u].append(v)
+
+def DFS(v):
+	global visited, departure, time
+	visited[v] = 1
+	for i in adj[v]:
+		if visited[i] == 0:
+			DFS(i)
+	departure[time] = v
+	time += 1
+
+def topologicalSort():
+	for i in range(V):
+		if visited[i] == 0:
+			DFS(i)
+	for i in range(V - 1, -1, -1):
+		print(departure[i], end=' ')
+
+if __name__ == '__main__':
+	V, time = 6, 0
+	adj = [[] for _ in range(7)]
+	visited = [0 for _ in range(7)]
+	departure = [-1 for _ in range(7)]
+
+	addEdge(5, 2)
+	addEdge(5, 0)
+	addEdge(4, 0)
+	addEdge(4, 1)
+	addEdge(2, 3)
+	addEdge(3, 1)
+
+	print("Topological Sort of the given graph is")
+	topologicalSort()
+
 ```
 
 ## OUTPUT
-```
-```
+
+![image](https://github.com/user-attachments/assets/52cd990a-143c-4562-b797-9d99e70f3ca5)
 
 ## RESULT
+
+Thus, the program has been executed and verified successfully.
